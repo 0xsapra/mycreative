@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		
+		input[type="file"]{
+			display: none;
+		}
+		.far_lef{
+			height: 10vh;width: 10vh;
+			float: left;
+			background-color: #e2e2e2;;
+			position: relative;
+		}
+
+		input[type="file"]+label{
+		height: 10vh;width: 10vh;
+		float: left;
+		background-color: #000;
+		color: white;
+		position: absolute;
+
+		}
+
+
+	</style>
+</head>
+<body>
+	<div class="far_lef" id="u"></div>
+	<div><input type="file" id="far"><label for="far" id="fa">hello</label></input></div>
+</body>
+<script type="text/javascript">
+	document.getElementById('fa').addEventListener('mouseover',function(){
+		var u=document.getElementById('u').offsetTop,z=document.getElementById('u').offsetLeft;
+		document.getElementById('fa').style.top=u+"px";
+		document.getElementById(('fa')).style.left=z+"px";	
+	});
+</script>
+</html>

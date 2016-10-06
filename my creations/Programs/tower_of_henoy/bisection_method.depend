@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1407260366 source:d:\development\c++ projects\bisection_method\main.cpp
+	<iostream>
+	<conio.h>
+
+1407864965 source:d:\development\c++ projects\tower_of_henoy\main.cpp
+	<iostream>
+	<conio.h>
+

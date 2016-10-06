@@ -1,0 +1,430 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+                        <style>
+
+                        html {
+                            color: #222;
+                            font-size: 1em;
+                            line-height: 1.4;
+                            margin: 0px;
+                        }
+                            body{
+                                margin: 0px;
+                            }
+
+
+                        ::-moz-selection {
+                            background: #b3d4fc;
+                            text-shadow: none;
+                        }
+
+                        ::selection {
+                            background: #b3d4fc;
+                            text-shadow: none;
+                        }
+
+                        /*
+                         * A better looking default horizontal rule
+                         */
+
+                        hr {
+                            display: block;
+                            height: 1px;
+                            border: 0;
+                            border-top: 1px solid #ccc;
+                            margin-bottom: 10vh;
+                            padding: 0;
+                        }
+
+
+                        audio,
+                        canvas,
+                        iframe,
+                        img,
+                        svg,
+                        video {
+                            vertical-align: middle;
+                        }
+
+                        fieldset {
+                            border: 0;
+                            margin: 0;
+                            padding: 0;
+                        }
+
+                        /*
+                         * Allow only vertical resizing of textareas.
+                         */
+
+                        textarea {
+                            resize: vertical;
+                        }
+
+                        /* ==========================================================================
+                           Browser Upgrade Prompt
+                           ========================================================================== */
+
+                        .browserupgrade {
+                            margin: 0.2em 0;
+                            background: #ccc;
+                            color: #000;
+                            padding: 0.2em 0;
+                        }
+
+                       
+
+                        /*
+                         * Hide visually and from screen readers
+                         */
+
+                        .hidden {
+                            display: none !important;
+                        }
+
+
+                        .visuallyhidden {
+                            border: 0;
+                            clip: rect(0 0 0 0);
+                            height: 1px;
+                            margin: -1px;
+                            overflow: hidden;
+                            padding: 0;
+                            position: absolute;
+                            width: 1px;
+                        }
+
+                        /*
+                         * Extends the .visuallyhidden class to allow the element
+                         * to be focusable when navigated to via the keyboard:
+                         * https://www.drupal.org/node/897638
+                         */
+
+                        .visuallyhidden.focusable:active,
+                        .visuallyhidden.focusable:focus {
+                            clip: auto;
+                            height: auto;
+                            margin: 0;
+                            overflow: visible;
+                            position: static;
+                            width: auto;
+                        }
+
+                        /*
+                         * Hide visually and from screen readers, but maintain layout
+                         */
+
+                        .invisible {
+                            visibility: hidden;
+                        }
+
+
+
+                        .clearfix:before,
+                        .clearfix:after {
+                            content: " "; /* 1 */
+                            display: table; /* 2 */
+                        }
+
+                        .clearfix:after {
+                            clear: both;
+                        }
+
+
+                        @media only screen and (min-width: 35em) {
+                            /* Style adjustments for viewports that meet the condition */
+                        }
+
+                        @media print,
+                               (-webkit-min-device-pixel-ratio: 1.25),
+                               (min-resolution: 1.25dppx),
+                               (min-resolution: 120dpi) {
+                            /* Style adjustments for high resolution devices */
+                        }
+
+                        @media print {
+                            *,
+                            *:before,
+                            *:after,
+                            *:first-letter,
+                            *:first-line {
+                                background: transparent !important;
+                                color: #000 !important; /* Black prints faster:
+                                                           http://www.sanbeiji.com/archives/953 */
+                                box-shadow: none !important;
+                                text-shadow: none !important;
+                            }
+
+                            a,
+                            a:visited {
+                                text-decoration: underline;
+                            }
+
+                            a[href]:after {
+                                content: " (" attr(href) ")";
+                            }
+
+                            abbr[title]:after {
+                                content: " (" attr(title) ")";
+                            }
+
+                            /*
+                             * Don't show links that are fragment identifiers,
+                             * or use the `javascript:` pseudo protocol
+                             */
+
+                            a[href^="#"]:after,
+                            a[href^="javascript:"]:after {
+                                content: "";
+                            }
+
+                            pre,
+                            blockquote {
+                                border: 1px solid #999;
+                                page-break-inside: avoid;
+                            }
+
+                            /*
+                             * Printing Tables:
+                             * http://css-discuss.incutio.com/wiki/Printing_Tables
+                             */
+
+                            thead {
+                                display: table-header-group;
+                            }
+
+                            tr,
+                            img {
+                                page-break-inside: avoid;
+                            }
+
+                            img {
+                                max-width: 100% !important;
+                            }
+
+                            p,
+                            h2,
+                            h3 {
+                                orphans: 3;
+                                widows: 3;
+                            }
+
+                            h2,
+                            h3 {
+                                page-break-after: avoid;
+                            }
+                        }
+                           
+                            ul{
+                                    list-style-type: none;
+                                }
+                                ul li{
+                                    display: inline;
+                                    margin: 1%;
+                                    letter-spacing: 0.1em;
+                                    word-spacing: 2px;
+                                    margin-left: 20px;
+                                }
+                                li{
+                                    padding-top:20%; 
+                                }
+                                a{
+                                    text-decoration: none;
+                                    color: black;
+                                    font-size:20px;
+                                    font-family: "helvatica";
+
+
+                                }
+                             /* ==========================================================================
+                           Author's custom styles
+                           ========================================================================== */
+
+                            #header{
+                                height:8vh;
+                                position: relative;
+                                display:flex;
+                                flex-wrap: nowrap;
+                                justify-content: space-between;
+                            }
+                            .item{
+                                width:100%;
+                                height:100%;
+                            }
+                            #feature,#popular,#some-imp{
+                                height:20vh;
+                                width: 100%;
+                            }
+                            #wind{
+                                background-image: url(img0.jpg);
+                                background-attachment: fixed;
+                                background-size: cover;
+                                border-radius: 30%;
+                                border:1px solid lightgray;
+                                position:relative;
+                            }
+                            .buttons{
+                                border:2px solid #1fb5ac;
+                                font-size: 16px;font-weight: 800;line-height: 40px;
+                                padding: 0px 30px;
+                                height: 5vh;
+                            }
+                            .buttons:hover{
+                                background-color: aqua;
+                            }
+                           .nav{
+                                display: flex;
+                                flex-wrap: nowrap;
+                                justify-content: space-between;
+                                height:50vh;
+                               overflow: hidden;
+
+                            }
+                            .nav-item{
+                                flex-grow: 1;
+                                font-size: 0px;
+                                position: relative;
+                                margin:0px 1px;
+                                transition: all 1s ease;
+                                overflow: hidden;
+
+                            }
+                            .nav-item:nth-child(1){
+                                background-image: url(esh.png);
+                                background-repeat: no-repeat;
+                                background-size: cover;
+
+                            }
+                            .nav-item:nth-child(3){
+                                background-image: url(esh.png);
+                                background-repeat: no-repeat;
+                                background-size: cover;
+
+                            }
+                            .nav-item:nth-child(5){
+                                background-image: url(esh.png);
+                                background-repeat: no-repeat;
+                                background-size: cover;
+
+                            }
+                            .nav-item:hover{
+                                opacity: 0.6;
+                                font-size: 20px;
+                            }
+                            
+                             #footer{
+                                    position: relative;
+                                    height:35vh;
+                                    background-color: lightblue;
+                                    width: 100%;
+                                 
+                                }
+                           
+                            
+
+
+
+                        /* ==========================================================================
+                           Helper classes
+                           ========================================================================== */
+
+        
+        
+    </style>
+        
+    </head>
+    
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div id='main' style="position:relative;">
+            <div id="header" style="min-width:50px;">
+                <div class="item">
+                <img src="Untitled-1.jpg" style="height:100%;transform:scale(2);overflow:hidden;margin-left:2vw;" >
+                </div>                
+                <div class="item"></div>
+
+                <div class="item">
+                <ul>
+                    <li><a class="come" href="#">HOME</a></li>
+                    <li><a class="come" href="#">START</a></li>
+                    </ul>
+                </div>
+                </div>
+            <hr>
+        
+        
+        
+        <div id="featured" style="height:25vh;">
+                <div id="feature">
+                    
+                    <div style="height:100%;width:12vw;background-color:lightblue;float:left;"></div>
+                    <div style="color:black;float:left;font-size:6vw;line-height:0.3"><h2 style="color:lightblue;display:inline">A</h1>BOUT <span style="font-size:4vw;">SITE</span> <div style="display:inline;font-size:1.2vw">In this site U can chat with anyone, random unknown, and make friends.</div></div>
+                     </div>
+                    
+                </div>
+        <div style="height:50vh;margin:0px 15%;" id="wind"><h1 style="margin:0px;text-align:center;color:white;margin-top:10%;">Let's Chat<br>A unique experience of chatting</h1><span style="position:absolute;top:0px;right:-10vw;font-size:1.5vw"><b>Unique Idea</b><br><span style="font-size:1.2vw;opacity:0.7">
+            Welcome to Lets Chat<br>
+            We Connect People <br>and Thus World.<br>
+            A Random Group <br>ChatRoom of 5 is <br> is Created and<br>and Now ur turn<br>to Take It Furthur
+            
+            </span></span></div>
+        
+            <div style="height:20vh;margin-top:2vh;background-color:rgba(211,211,211,0.6);position:relative;">
+              <a href="signup.html" class="buttons" style="position:absolute;left:40%;top:35%;">Sign-Up</a>
+               <a href="login.html" class="buttons" style="position:absolute;right:40%;top:35%;">Log-In</a>
+                
+
+            </div>
+            <div style="display:block;height:30vh;">
+            <div style="height:25vh;width:12vw;background-color:lightblue;float:left;"></div>
+            <div style="color:black;float:left;font-size:6vw;line-height:0.3"><h2 style="color:lightblue;display:inline">O</h1>UR TEAM <div style="display:inline;font-size:1.2vw">DEVELOPERS from google.</div></div><br><br><br>
+            </div>
+            <div style="margin:2vh 7vw;">
+            <div class="nav">
+                <div class="nav-item"><span>Eshma Shukla</span></div>
+                <div class="nav-item"></div>
+                <div class="nav-item"><span>Eshma frnd1</span></div>
+                <div class="nav-item"></div>
+                <div class="nav-item"><span>Eshma frnd2</span></div>
+                
+                
+                </div> 
+                    </div>
+           
+            </div>
+        <hr style="margin:10px;">
+         <div id="footer">
+            <span style="position:absolute;bottom:0px;right:10%;">&copy;Googlers</span>
+            
+            </div>
+            
+
+        
+        
+        <script>
+            window.addEventListener('scroll',function(){
+                
+            });
+        
+        </script>
+        
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script>
+    </body>
+</html>

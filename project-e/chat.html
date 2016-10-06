@@ -1,0 +1,163 @@
+<html>
+
+    <style>
+    
+html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+}
+        
+    
+ul{
+    list-style-type: none;
+}
+ul li{
+    display: inline;
+    margin: 1%;
+    letter-spacing: 0.1em;
+    word-spacing: 2px;
+    margin-left: 20px;
+}
+li{
+    padding-top:20%; 
+}
+a{
+    text-decoration: none;
+    color: black;
+    font-size:20px;
+    font-family: "helvatica";
+     
+
+}
+
+#header2{
+    height:12vh;
+    position: relative;
+    display:flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+.item{
+    flex-grow: 2;
+    height:100%;
+
+}
+#header2 li{
+    font-size: 0.1vw;
+}
+.item:nth-child(3){
+    flex-grow: 2;
+
+}
+.chat-c{
+    height:10vh;
+    width: 100%;
+    
+    border: 1px solid lightgray;
+}
+.chat-c1{
+    width:30%;
+    border:1px solid lightgray;
+    height:100%;
+    float:left;
+    background-image: url(img0.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    
+}
+.chat-c2{
+    width:69%;
+    text-align: center;
+    margin-top: 3%;
+
+    height:100%;
+    float:right;
+}
+
+#reply-chat{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height:20vh;
+}
+.sync-chat{
+    font-size: 15px;
+    width: 80%;
+    
+}
+.sync-chat:first-letter{
+    text-transform: capitalize;
+}
+.side-synch-chat{
+    float:right;margin-right:2%;opacity:0.6;
+}
+
+
+
+
+
+    </style>
+<body>
+    <div>
+         <div id="header2" style="min-width:50px;border-bottom:1px solid lightgray;">
+                <div class="item">
+                <img src="../Untitled-1.jpg" style="height:100%;transform:scale(2);overflow:hidden;margin-left:2vw;" >
+                </div>
+                <div class="item">
+                    <input type='search' style="width:80%;margin-top:5vh;;" id="ip-box" autocomplete='off' name='searchbox' placeholder='Search Your Project'>                </div>
+             <div class="item">
+                <ul>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Notification</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Setting</a></li></ul>
+                </div>
+                </div>
+        
+        <div id="content" style="height:75vh;">
+        <div style="width:24vw;height:100%;border-right:1px solid lightgray;float:left;">
+                                          <span style="text-align:center;width:100%;display:block;opacity:.6">MESSAGES</span><hr>
+           
+            <div class="chat-c">
+                                <div class="chat-c1">
+
+                                </div>
+                                
+                                <div class="chat-c2">
+                                        <b>grp-1</b>
+                            
+                                </div>
+                
+
+                        </div>
+        </div>
+            
+        <div style="float:right;width:74vw;height:100%;position:relative;">
+            <div class="sync-chat">
+                <!--chat sei value idhar isme display karaio-->
+            </div>         
+            <div class="side-synch-chat">DATE/TIME</div> 
+
+           
+            
+            
+            
+            
+            <input type="search" id="reply-chat" placeholder="reply for chat" />
+            
+            </div>
+    
+    
+    
+    </div>
+    </div>
+              
+        
+    
+    
+    
+    </body>
+</html>
