@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;width: 100%;">
+<head>
+	<meta charset="UTF-8">
+	<title>starfiel</title>
+	<script type="text/javascript">
+		function Star(){
+			this.x=parseInt(Math.random()*canvas.width);
+			this.y=parseInt(Math.random()*canvas.height);
+			this.z=canvas.width;
+			this.draw=function(c){
+				nx=(this.x/this.z)*innerWidth;
+				ny=(this.y/this.z)*innerHeight;
+				console.log(`nx is ${nx} and ny is ${ny}`);
+				c.beginPath(); c.arc(nx,ny,5,0,2*Math.PI,true); c.fill();
+
+			};
+			this.update=function(){
+				if(this.z>1)this.z-=1;
+			};
+		}
+		function background(color,c){
+			prev=c.fillStyle;
+			c.fillStyle=color;
+			c.fillRect(0,0,canvas.width,canvas.height);
+			c.fillStyle=prev;
+		}
+	</script>
+</head>
+<body style="margin:0;height: 100%;width: 100%;">
+		<canvas id="canvas">No support for canvas dumb browser u got.</canvas>
+
+		<script type="text/javascript">
+			var canvas=document.getElementById('canvas'),c=canvas.getContext('2d'),stars=new Array(100);
+			// basic setup
+			c.fillStyle="black";
+			canvas.height=innerHeight;
+			canvas.width=innerWidth;
+			c.fillRect(0,0,canvas.width,canvas.height);
+			for(var i=0;i<stars.length;i++){
+				stars[i]=new Star();
+			}
+			c.translate(canvas.width/2,canvas.height/2);
+			c.fillStyle="white";
+			// ------------------------------------------------------------------------stuff -------------------------------------------------------------------------------
+			
+			setInterval(function(){
+				background("black",c);
+				for(var i=0;i<stars.length;i++){
+
+					stars[i].draw(c);
+					stars[i].update();
+
+					}background('black');
+			},7);
+			
+			
+			
+
+			
+		</script>
+</body>
+</html>
