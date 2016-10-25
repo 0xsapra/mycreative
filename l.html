@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		var sizeofwindow=[innerHeight,this,innerWidth];	//this is the object it is in, i.e window onject and innerHeight tell the Height of window visible
+		// pageYOffset~=scrollY nd same for x
+		//some events are load,resize,focus,blur,click,dbclick,mousedown,mouseover,mmousemove,input,keydown,submit, change,input,(DOMNodeInserted)
+
+		// event have pageX for cursor poisition,screenX for screen size,clienzX for cursor inside browser's html content 
+	</script>
+</head>
+<body>
+	<h1> my class room </h1>
+	<b id="hel"><em> is very good </em></b>
+    <i> I love my school ve<b&#x61;>r</b>y much </i>
+	<input type="text">
+	<div id="ball"></div>
+
+
+		<div style="overflow: auto">
+		<canvas id="canvas" height="500" width="500" style="border:1px solid black">Plz Get a Better browser.</canvas>
+
+		<div id="redd" style="height:20px;width:20px;background-color: red;position:absolute;top:200px;left:600px"></div>
+		<div id="white" style="height:20px;width:20px;background-color: white;position:absolute;top:200px;left:650px"></div>
+		<div id="blue" style="height:20px;width:20px;background-color: blue;position:absolute;top:200px;left:700px"></div>
+
+		<div id="stroke" style="height:30px;width:10px;background-color: white;position:absolute;top:250px;left:600px"><hr>INC</div>
+		<div id="strokeles" style="height:30px;width:10px;background-color: white;position:absolute;top:300px;left:600px"><hr>dec </div>
+
+		</div>
+
+
+
+	<!-- now comes the diffrenial part -->
+	<style type="text/css">
+		#ball{
+			border-radius: 50%;
+			background-color: #501010;
+			height: 50px;
+			width: 50px;
+			transition: all 0.1s ease-in-out;
+			
+		}
+		
+
+	</style>
+	<script>
+	document.getElementById('hel').addEventListener('click',function(){
+		console.log(this);
+		console.log(event.target.nodeName);
+
+	});
+	document.body.style.backgroundColor="green";
+	var Obj =function(){
+		this.name="aman";
+		this.running=0;
+		this.velocity=0;
+		this.speed=5;
+
+		this.speedup=function(){
+			this.velocity+=this.speed;
+			this.speed+=5;
+		};
+		this.run=function(){
+			this.running=this.velocity;
+			return this.running;
+		};
+
+	};
+	var aman=new Obj();
+	var ball=document.getElementById('ball');
+	document.addEventListener('keypress',function(){
+		ball.style.transform='translateX('+aman.run()+'px)';
+		if(event.key=='w'){
+			aman.speedup();
+
+
+		}
+			});
+
+	var canvas=document.getElementById('canvas'),c=canvas.getContext("2d");
+	var maker=true;
+	canvas.addEventListener('click',function(){
+		if(maker){
+			maker=false;
+			draw();
+			
+		}else
+		{maker=true; }
+
+	});
+	function draw(){
+	c.fillStyle="white";
+	c.beginPath();
+	var xywid=12;
+	canvas.onmousemove=function(){
+		// c.clearRect(0,0,canvas.height,canvas.width);
+		var e=event,pos=[e.clientX-canvas.offsetLeft,e.clientY-canvas.offsetTop];	//get mouse coordinates e.clientX and offsetLeft of canvas tell how much left it os from window
+		c.fillRect(pos[0]-10,pos[1]-10,xywid,xywid);		//at position of pointer wrt canvas draw a rect at position -10 ,and size 12
+		console.log(pos.toString());
+	
+	c.stroke();
+}
+	console.log(`${canvas.offsetTop}px is from top and ${canvas.offsetLeft}px from the Left`);
+
+		document.getElementById('redd').addEventListener('click',function(){c.fillStyle="red";  });
+		document.getElementById('blue').addEventListener('click',function(){c.fillStyle="blue";  });
+		document.getElementById('white').addEventListener('click',function(){c.fillStyle="white";  });
+		document.getElementById('stroke').addEventListener('click',function(){xywid+=5;});
+		document.getElementById('strokeles').addEventListener('click',function(){if(xywid>=5)xywid-=5;});
+}
+		</script>
+	
+</body>
+</html>

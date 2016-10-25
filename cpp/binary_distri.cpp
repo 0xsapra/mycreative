@@ -33,11 +33,20 @@ return x;
 
 int main(){
 
-    float val=calca(0.5,7,16,16);
+	float a[4];
+	printf("enter the efficient probability of the event:\t");
+	scanf("%f",&a[0]);
+	printf("enter the start point:\t");
+	scanf("%f",&a[1]);
+	printf("enter the end point:\t");
+	scanf("%f",&a[2]);
+	printf("enter the total numeber of times event occured\t");
+	scanf("%f",&a[3]);
+    float val=calca(a[0],a[1],a[2],a[3]);
 //    if question says atleast 7 heads thn the arguments passed are like 1st args i.e 0.5 if probability of favour tht is head 2nd is 7 that is atleast 7 and 3rd argument is wht atmost value it can take tht is 16 heads at max, and last 4th arg 16 is total many time an event occur
     
 //    if suppose question says exactly 3 times in 100 toses thn we pass calc(0.5,3,3,100)
-    printf("%f",val);
+    printf("%f\n",val);
 
 return 0;
 }
