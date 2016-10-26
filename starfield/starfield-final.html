@@ -9,19 +9,21 @@
 			this.y=parseInt(Math.random()*canvas.height)*2>innerHeight?(-parseInt(Math.random()*canvas.height)):parseInt(Math.random()*canvas.height);
 			this.z=canvas.width;
 			this.draw=function(c){
-				nx=(this.x/this.z)*innerWidth;
+				nx=(this.x/this.z)*innerWidth;		//end poisition hai z toh like 1/2=0.5 means 1 jo hai 2 seaai half distace pr hai, same x/z is x , z sei kitna dist. hai
 				ny=(this.y/this.z)*innerHeight;
 				// console.log(`nx is ${nx} and ny is ${ny}`);
-				c.beginPath(); c.arc(nx,ny,5,0,2*Math.PI,true); c.fill();
+				c.beginPath(); c.arc(nx,ny,(Math.random()*3),0,2*Math.PI,true); c.fill();
 
 			};
 			this.update=function(){
-				console.log(this.z);
-				this.z-=4;
-				if(this.z<canvas.width/2){
+				
+				this.z-=2;
+
+				if(innerWidth/2-Math.abs((this.y/this.z)*innerWidth)<1){
 					this.z=canvas.width;
 					this.x=parseInt(Math.random()*canvas.width)*2>innerWidth?(-parseInt(Math.random()*canvas.width)):parseInt(Math.random()*canvas.width);
-					this.y=parseInt(Math.random()*canvas.height)*2>innerHeight?(-parseInt(Math.random()*canvas.height)):parseInt(Math.random()*canvas.height);}
+					this.y=parseInt(Math.random()*canvas.height)*2>innerHeight?(-parseInt(Math.random()*canvas.height)):parseInt(Math.random()*canvas.height);
+				console.log(this.z);}
 			};
 		}
 		
@@ -31,7 +33,7 @@
 		<canvas id="canvas">No support for canvas dumb browser u got.</canvas>
 
 		<script type="text/javascript">
-			var canvas=document.getElementById('canvas'),c=canvas.getContext('2d'),stars=new Array(400);
+			var canvas=document.getElementById('canvas'),c=canvas.getContext('2d'),stars=new Array(500);
 			// basic setup
 			c.fillStyle="black";
 			canvas.height=innerHeight;
