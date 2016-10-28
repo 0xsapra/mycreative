@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>snake</title>
+	<script type="text/javascript">
+
+		var size=15;
+
+		function Snake(){
+			this.x=0;
+			this.y=0;
+			this.speedx=1;
+			this.speedy=0;
+			
+			this.direct=function(x,y){
+				this.speedx=x;
+				this.speedy=y;
+			};
+			this.update=function(){
+				this.x+=this.speedx*size;
+				this.y+=this.speedy*size;
+
+			};
+
+			this.show=function(c){
+				c.fillStyle="white";
+				c.fillRect(this.x,this.y,size,size);
+
+			};
+
+
+		
+
+		}
+		function Food(){
+			this.x=Math.random()*(innerWidth);
+			this.y=Math.random()*(innerHeight);
+
+			this.show=function(){
+				c.fillStyle="red";
+				c.fillRect(this.x,this.y,size,size);
+
+			};
+			this.eat=function(snk){
+				if(Math.abs(snk.x-this.x)<size && Math.abs(snk.y-this.y)<size){ console.log('hello'); return true;}
+				else return false;
+			};
+		}
+
+
+		function clearbackground(color,c){
+			prev=c.fillStyle;
+			c.fillStyle=color;
+			c.fillRect(0,0,innerWidth,innerHeight);
+			c.fillStyle=prev;
+
+		}
+
+	</script>
+</head>
+<body style="margin:0">	
+	<canvas id="snake">Get a better browser plz</canvas>
+	
+
+
+	<script type="text/javascript">
+		
+		// setup
+		var canvas=document.getElementById('snake'),c=canvas.getContext('2d');
+		canvas.height=window.innerHeight;
+		canvas.width=window.innerWidth;
+
+		c.fillStyle="gray";
+		c.fillRect(0,0,innerWidth,innerHeight);
+
+		var snk=new Snake();
+		var food=new Food();
+		// ---------------------------------------------------update em all---------------------------------------------------
+		setInterval(function(){
+			clearbackground('gray',c);
+			snk.show(c);
+			food.show();
+			if(food.eat(snk)){
+				food=new Food();
+			}
+			if(snk.x<innerWidth-size && snk.y<innerHeight-size){
+				snk.update();
+			}
+		},800);
+
+		document.body.addEventListener('keydown',function(){
+			var keyd=event.key;
+			if(keyd==="ArrowUp"){
+				snk.direct(0,-1);
+			}
+			else if(keyd==="ArrowDown"){
+				snk.direct(0,1);
+			}
+			else if(keyd==="ArrowLeft"){
+				snk.direct(-1,0);
+			}
+			else if(keyd==="ArrowRight"){
+				snk.direct(1,0);
+			}
+		});
+	</script>
+</body>
+</html>
