@@ -1,7 +1,6 @@
 import urllib,urllib2
 from cookielib import CookieJar
 import optparse
-import numpy as np
 import re
 
 cj=CookieJar()
