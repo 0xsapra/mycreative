@@ -1,21 +1,31 @@
 import urllib,urllib2
 from cookielib import CookieJar
 import optparse
-import numpy as np
 import re
 
 cj=CookieJar()
 opener=urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
 links=set([])
 match_and_get_url=lambda url: set(re.findall(r'href="(h[\w:/\w.]+)',url))
+dontcare=['facebook','google','gmail','yahoo','twitter','instagram','youtube',]
 
+
+def refine(mainl): 
+	returner =[]
+	for i in mainl:
+		for j in dontcare:
+			if i.find(j) != -1: returner.append(i)
+			else: continue
+	return returner
 
 def extract(seed):
-	# if(len(links)==0):
 	links=match_and_get_url(seed)
 	mainLink=[i for i in links]
+	mainLink=refine(mainLink)
+
 	for i in mainLink:
-		y= get_text(i).read()
+		try: y= get_text(i).read()
+		except:	continue
 		li=set(match_and_get_url(y))
 		links=links|li
 	return links

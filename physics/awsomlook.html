@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>PHYSICS ENGINE</title>
+	<script type="text/javascript">
+		function setup(can){
+			can.height=window.innerHeight;
+			can.width=window.innerWidth;
+			}
+		function random(x){return Math.random()*x;}
+		function CreateVector(x,y){
+			this.x=x;
+			this.y=y;
+
+			this.add=function(adder){
+				this.x+=adder.x;
+				this.y+=adder.y;
+			};
+			this.sub=function(adder){
+				this.x-=adder.x;
+				this.y-=adder.y;
+			};
+			this.mult=function(x){
+				this.x*=x;
+				this.y*=x;
+			}
+		}
+	</script>
+
+	<script type="text/javascript">
+		function Particle(){
+			this.xy=new CreateVector(random(innerWidth),innerHeight+1);
+			this.velocity=new CreateVector(0,random(-21));
+			this.accelerate=new CreateVector(0,0);
+			this.color="rgba("+parseInt(random(200))+","+parseInt(random(200))+","+parseInt(random(200))+","+parseInt(random(100))+")";
+
+			this.show=function(){
+				c.beginPath();
+				c.moveTo(this.xy.x,this.xy.y);				//essentialy now this point becomes axis 0,0 for the line
+				c.strokeStyle=this.color;
+				c.lineWidth=10;
+				c.lineTo(this.xy.x,this.xy.y-15);
+				c.stroke();
+				c.closePath();
+			};
+
+
+
+			this.accForce=function(g){
+				this.accelerate.y=g;
+			};
+			this.update=function(){
+				this.xy.add(this.velocity);
+				this.velocity.add(this.accelerate);
+				if(this.velocity.y>=0){
+					// point when gravity(accelarion) overcomes velocity and ball is pushed down
+
+				}
+				
+			};
+		}
+
+
+	</script>
+	<script type="text/javascript">
+		function Firework(){
+			this.particle=new Particle();
+
+			this.update=function(){
+				this.particle.accForce(gravity);
+				this.particle.update();
+			};
+			this.show=function(){
+				this.particle.show(c);
+			};
+		}
+
+
+	</script>
+</head>
+<body style="margin:0">
+		<canvas id="phy"></canvas>
+
+</body>
+<script type="text/javascript">
+	var canvas=document.getElementById('phy'),c=canvas.getContext('2d');
+	var gravity=0.3;
+	setup(canvas);
+	c.fillStyle="rgba(200,200,200,100)";
+	c.fillRect(0,0,canvas.width,canvas.height);
+	fireworks=[];
+
+
+	inter=setInterval(function(){
+		clearAll();
+		fireworks.push(new Firework());
+		for(var i=0;i<fireworks.length;i++){
+			fireworks[i].update();
+			fireworks[i].show();
+
+		}
+
+	},40);
+
+</script>
+
+
+<script type="text/javascript">
+	function clearAll(){
+		c.fillStyle="rgba(200,200,200,100)";
+		c.fillRect(0,0,innerWidth,innerHeight);
+	}
+
+</script>
+
+
+
+
+
+
+
+</html>
