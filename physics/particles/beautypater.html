@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>PHYSICS ENGINE</title>
+	<script type="text/javascript">
+		function setup(can){
+			can.height=window.innerHeight;
+			can.width=window.innerWidth;
+			}
+		function random(x){return Math.random()*x;}
+		function CreateVector(x,y){
+			this.x=x;
+			this.y=y;
+
+			this.add=function(adder){
+				this.x+=adder.x;
+				this.y+=adder.y;
+			};
+			this.sub=function(adder){
+				this.x-=adder.x;
+				this.y-=adder.y;
+			};
+			this.mult=function(x){
+				this.x*=x;
+				this.y*=x;
+			};
+		}
+	</script>
+
+	<script type="text/javascript">
+		function Particle(vect,dontdissappear){
+
+			if(!vect){this.xy=new CreateVector(random(innerWidth),innerHeight+1);}
+			else {this.xy=vect;}
+			
+			this.velocity=new CreateVector(0,random(-21));
+			this.accelerate=new CreateVector(0,0);
+			
+			this.color="rgba("+parseInt(random(200))+","+parseInt(random(200))+","+parseInt(random(200))+","+parseInt(random(100))+")";
+
+			this.show=function(){
+				
+				// c.moveTo(this.xy.x,this.xy.y);				//essentialy now this point becomes axis 0,0 for the line
+				// c.strokeStyle=this.color;
+				// c.lineWidth=10;
+				// c.lineTo(this.xy.x,this.xy.y-15);
+				// c.stroke();
+				// c.closePath();
+				c.beginPath();
+				c.arc(this.xy.x,this.xy.y,3,0,Math.PI*2);
+				c.fillStyle=this.color;
+				c.fill();
+			};
+
+
+
+			this.accForce=function(g){
+				this.accelerate.y=g;
+			};
+			this.update=function(){
+				this.xy.add(this.velocity);
+				this.velocity.add(this.accelerate);
+				};
+				// if(this.velocity.y>=0){
+				// 	// point when gravity(accelarion) overcomes velocity and ball is pushed down
+				// 	this.velocity.mult(0);
+				// }
+
+				// bouncyyyyy ballls
+				// if(this.xy.y>=innerHeight){
+				// 	this.velocity.y=-0.5*this.velocity.y;
+				// }	};
+				
+			
+		}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	</script>
+	<script type="text/javascript">
+		function Firework(){
+			this.particle=new Particle();
+			this.exploded=false;
+			this.allparts=[];
+			
+			this.update=function(){
+				if(!this.exploded){
+					this.particle.accForce(gravity);
+					this.particle.update();
+					if(this.particle.velocity.y>=0)
+					{
+						this.exploded=true;
+						this.explode();
+					}
+					}
+				for (var i = this.allparts.length - 1; i >= 0; i--) {
+					this.allparts[i].accForce(gravity);
+					this.allparts[i].update();
+				}
+				
+				};
+
+			this.show=function(){
+				if(!this.exploded)this.particle.show(c);
+				for (var i = this.allparts.length - 1; i >= 0; i--) {
+					this.allparts[i].show();
+				}
+				};
+			
+			this.explode=function(){
+				for (var i = 0; i <= 100; i++) {
+					this.allparts.push(new Particle(new CreateVector(this.particle.xy.x,this.particle.xy.y),true));
+				}
+				};
+
+		}
+
+
+
+	</script>
+</head>
+<body style="margin:0">
+		<canvas id="phy"></canvas>
+
+</body>
+<script type="text/javascript">
+	var canvas=document.getElementById('phy'),c=canvas.getContext('2d');
+	var gravity=0.3;
+	setup(canvas);
+	c.fillStyle="rgba(200,200,200,100)";
+	c.fillRect(0,0,canvas.width,canvas.height);
+	fireworks=[];
+
+
+	inter=setInterval(function(){
+		clearAll();
+
+
+			if(random(10)>8)		//controller looper
+				{(random(10));fireworks.push(new Firework());}
+
+
+
+		for(var i=0;i<fireworks.length;i++){
+			fireworks[i].update();
+			fireworks[i].show();
+
+		}
+
+	},40);
+
+</script>
+
+
+<script type="text/javascript">
+	function clearAll(){
+		c.fillStyle="rgba(200,200,200,100)";
+		c.fillRect(0,0,innerWidth,innerHeight);
+	}
+
+</script>
+
+
+
+
+
+
+
+</html>
