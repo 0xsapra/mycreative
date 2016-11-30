@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>
+		
+	</title>
+	<style>
+		body,html{
+			margin:0;	
+		}
+		fl{
+			margin: 400px;
+		}
+		</style>
+</head>
+<body>
+    <a href=0x61;>YQ==</a>
+    <br><br><br><br><br><br><br><br><br>
+	<canvas id="canvas"></canvas>
+	<form ><input type="file" name="fl"> <input type="submit" name="ok"> </form>
+
+
+	<script type="text/javascript">
+		
+		document.forms[0].onsubmit=function(e){
+			e.preventDefault();
+			console.log(e);
+		};
+	</script>
+
+       hmm : : : &#40;
+</body>
+<script type="text/javascript">
+	var canvas=document.getElementById('canvas'),c=canvas.getContext('2d');
+	canvas.width=window.innerWidth;
+	canvas.height=window.innerHeight;
+	var imgObj=new Image();
+	c.translate(-10,-20);
+	c.font="bold 40px ARIAL";
+	c.fillStyle="white";
+	c.strokeWidth='4';
+	imgObj.onload=function(){
+		c.drawImage(imgObj,0,0,canvas.width/1.5,canvas.height);
+		c.fillText('TIME',canvas.width-innerWidth/1.5,canvas.height-innerHeight/7);
+		c.strokeText('TIME',canvas.width-innerWidth/1.5,canvas.height-innerHeight/7);
+
+	};
+
+	imgObj.src="scr.jpg";
+	c.beginPath();
+	c.moveTo(1000,500);
+	c.lineTo(1090,500);
+	c.stroke();
+	c.endPath();
+    
+</script>
+</html>
