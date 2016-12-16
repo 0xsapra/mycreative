@@ -82,8 +82,8 @@ if  __name__=="__main__":
     #    1. for quick sort              #
     #    2. for selection sort          #
     #    3. for merge sort              #
-    #    4.for bubble sort              #
-    #    5.lowest quick sort            #
+    #    4. for bubble sort             #
+    #    5. lowest quick sort           #
     #####################################
     '''
     choice=int(raw_input("input number is:"))
