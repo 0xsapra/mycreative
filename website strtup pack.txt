@@ -14,6 +14,11 @@ debug mode then no minification else minify the scripts.. entry point is where t
 8. just run the cmd 
 	NODE_ENV=production webpack
 9. include the script.min.js to main.php
+10.  terminal $npm run dev
+to run site on server(8080 port, in package son we can manage exact location of where the main site is by editing the command
+	:webpack-dev-server —-content-base ./
+	u can use anything in ./ place, 
+)
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -27,6 +32,9 @@ WEBPACK.
 
 
 IN loaders in webpack we have already mentioned to use babel to transpile js so no need for tht, we now only run webpack and it does it all
+
+The command: AMAN$ webpack —watch
+	this is to keep compiling while on the go.
 
 -------------------------webpack.config.js-------------------------
 var debug = process.env.NODE_ENV !== "production";
@@ -65,15 +73,16 @@ module.exports = {
 -------------------------package.json-------------------------
 
 {
-  "name": "es6",
+  "name": "SAPRA",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-   "build": "babel src -d allofcomplie"
+    "build": "babel src -d allofcomplie”,
+    "dev"  : "webpack-dev-server --content-base ./ --inline --hot"
   },
-  "scrips":{
-   "build":"babel --presets es2015 src -d allofcomplie"
+  "scrips": {
+    "build": "babel --presets es2015 src -d allofcomplie"
   },
   "author": "",
   "license": "ISC",
@@ -88,16 +97,21 @@ module.exports = {
     "babel-preset-stage-0": "^6.3.13",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
-    "webpack": "^1.12.9",
+    "webpack": "^1.14.0",
     "webpack-dev-server": "^1.14.1",
     "babel-cli": "^6.18.0",
     "babel-preset-es2015": "^6.18.0",
-    "webpack": "^1.14.0",
-    "babel-preset-latest": "^6.16.0"
+    "babel-preset-latest": "^6.16.0",
+    "webpack-dev-server": "^1.16.2"
   }
 }
+
 -------------------------index.php-------------------------
 
 <html>
 <title>
 <script src="script.min.js" />
+
+
+
+
