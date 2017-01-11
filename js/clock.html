@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<canvas id="canvas"></canvas>
+
+
+<script type="text/javascript">
+
+
+		canvas=document.getElementById('canvas'),
+							c=canvas.getContext('2d');
+		canvas.height=500;
+		canvas.width=500;
+		canvas.style.transorm="translate(500)";
+		c.translate(50,50);
+
+		var m=90;
+		origin={x:300,y:300,
+			make:function(){
+				
+			}
+
+		};
+		rad=100;
+		findedx=0;
+		findedy=0
+		var i=0;
+
+
+		
+		setInterval(function(){
+
+		c.clearRect(0,0,canvas.height,canvas.width);
+
+			// circle
+		c.beginPath();
+		c.strokeStyle="black";
+		c.arc(origin.x,origin.y,rad,0,Math.PI*2);
+		c.stroke();
+
+		c.strokeStyle="green";
+		c.lineWidth="3";
+		var angle=i*6;
+		
+		c.beginPath();
+		c.moveTo(origin.x,origin.y);
+		c.lineTo(origin.x+rad*tofindx(angle),origin.y+rad*tofindy(angle));
+		c.stroke();
+		i=i==60?0:i+1;
+		},1000);
+		
+
+
+		function tofindx(a){
+			findedx=Math.sin((Math.PI*a)/180);
+				return findedx;
+			}
+
+		function tofindy(a){
+		
+			findedy=Math.cos((Math.PI*a)/180);
+		
+				return -1*findedy;
+				
+			
+		}
+</script>
+</body>
+</html>
