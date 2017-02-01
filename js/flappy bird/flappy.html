@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+		<style type="text/css">
+			body,html{
+				margin: 0;padding: 0;
+			}
+		</style>
+
+	<script type="text/javascript">
+		function Bird(){
+			this.y=canvas.height/2;
+			this.x=50;
+			this.lift=-15;
+			this.gravity=0.6;
+			this.velcoity=0;
+			this.moti=70;
+
+			this.show=function(){
+				// c.beginPath();
+				c.drawImage(img,this.x,this.y,this.moti,this.moti);
+				// c.arc(this.x,this.y,this.moti,0,Math.PI*2);
+				// c.fill();
+			};
+
+			this.upforce=function(){
+				this.velcoity+=this.lift;
+			};	
+			this.update=function(){
+				
+				this.y+=this.velcoity;
+				this.velcoity*=0.9;
+				this.velcoity+=this.gravity;
+				if(this.y >=canvas.height){this.y=canvas.height;this.velcoity=0;}
+				if(this.y <=0){this.y=0;this.velcoity=0;}
+			};
+
+		}
+
+
+		function Pipe(){
+			this.top=Math.random(canvas.height/2)*(canvas.height/1.55);
+			this.down=Math.random(canvas.height/2)*(canvas.height/1.55);
+			
+			this.x=canvas.width;
+			this.width=20;
+			this.speed=19;
+			this.show=function(){
+			// 	if(Math.abs(this.top-this.down)<30){this.top=Math.random(canvas.height/2)*(canvas.height/1.55);
+			// this.down=Math.random(canvas.height/2)*(canvas.height/1.55);this.show();}
+			// 	c.fillStyle="blue";
+				c.fillRect(this.x,0,this.width,this.top);
+				c.fillRect(this.x,canvas.height-this.down,this.width,this.down);
+			};
+			this.update=function(){
+				this.x-=this.speed;
+			};
+			this.hit=function(){
+
+			};
+
+		}
+
+	</script>
+
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<canvas id="canvas"></canvas>
+	<script type="text/javascript">
+		
+	//setups
+		var canvas=document.getElementById('canvas'),
+			c=canvas.getContext('2d');
+
+		canvas.height=window.innerHeight;
+		canvas.width=window.innerWidth;
+		var bird= new Bird();
+		var pipes=[];
+		var img=new Image();
+
+		img.src="flap.png";
+		setInterval(function(){pipes.push(new Pipe());},1200);
+	//drawing
+
+		var draw=setInterval(function(){
+		c.clearRect(0,0,canvas.width,canvas.height);
+		bird.show();
+		bird.update();
+		for (var i = pipes.length-1 ; i >= 0; i--) {
+			if(pipes[i].x<0){pipes[i].pop();}
+			pipes[i].show();
+			pipes[i].update();
+			if(pipes[i].hit(bird)){
+				alert("mar dia ree");
+			}
+
+
+		}
+
+	},20);
+
+		window.addEventListener('keypress',function(e){
+			if(e.keyCode==32){
+				bird.upforce();
+			}
+
+	});
+
+
+
+	</script>
+</body>
+</html>
