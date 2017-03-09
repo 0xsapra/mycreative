@@ -36,6 +36,11 @@ IN loaders in webpack we have already mentioned to use babel to transpile js so 
 The command: AMAN$ webpack —watch
 	this is to keep compiling while on the go.
 
+the command “babel src1 -d js” in package.json in script (command in scripts can be used as $npm run scriptname)
+now “babel src1 -d js” takes files from transpile the ecma6 to ecma5
+
+
+
 -------------------------webpack.config.js-------------------------
 var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
