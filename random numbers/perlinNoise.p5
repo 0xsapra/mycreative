@@ -1,0 +1,17 @@
+function setup() {
+  t=0;
+  createCanvas(600,600);
+  background(0);
+  counter=0;
+  
+}
+
+function draw() {
+  x1=noise(t);
+  y1=map(x1,0,1,0,height);
+  t+=0.01;
+  fill(212);
+  ellipse(counter,y1,8,8);
+  counter+=1;
+  
+}

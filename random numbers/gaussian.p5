@@ -1,0 +1,27 @@
+
+float[] blocks=new float[64];
+void setup() {
+  size(640, 360);
+  background(0);
+  for(int i=0;i<64;i++){
+    blocks[i]=0;
+  }
+}
+
+
+
+void draw() {
+  float val = randomGaussian();
+  float v=(val*100)+width/2;
+  
+  int t=(int)map(v,0,640,0,64);
+  blocks[t]++;
+  
+  
+//i*10,height,10,blocks[i]*10
+  for(int i=0;i<64;i++){
+    rect(i*10,0,10,blocks[i]*10);
+    fill(212);
+  }
+
+}
