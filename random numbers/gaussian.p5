@@ -12,7 +12,7 @@ void setup() {
 
 void draw() {
   float val = randomGaussian();
-  float v=(val*100)+width/2;
+  float v=(val*100)+width/2;  Mul by 100 to take mean to 100 , i.e shift grafh to 100 and width/2 is standard deviation , meaning spread
   
   int t=(int)map(v,0,640,0,64);
   blocks[t]++;

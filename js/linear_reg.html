@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+
+<canvas height="600" width="600" id="canvas">
+</canvas>
+
+
+	<script>
+		var canvas=document.getElementById('canvas'),ctx=canvas.getContext('2d');
+
+		ctx.fillStyle="gray";
+		ctx.fillRect(0,0,canvas.width,canvas.height);
+
+
+		function Vector(x,y){
+			this.x=x;
+			this.y=y;
+		}
+
+		var Points=[];
+		m=1;
+		b=0;
+
+		document.getElementById('canvas').addEventListener('click',function(e){
+				x=(e.clientX-canvas.offsetLeft);
+				y=(e.clientY-canvas.offsetTop);
+				v=new Vector(x,y);
+				Points.push(v);
+		});
+
+
+		setInterval(function(){
+			ctx.fillStyle="gray";
+			ctx.fillRect(0,0,canvas.width,canvas.height);
+
+			for(i=0;i<Points.length;i++){
+				createCir(Points[i].x,Points[i].y);
+			}
+			lr();
+			drawLine();
+		},100);
+
+
+
+
+		function createCir(x,y){
+			ctx.beginPath();
+			ctx.fillStyle="white";
+			ctx.arc(x,y,10,0,2*Math.PI);
+			ctx.fill();
+		}
+
+		function drawLine(){
+			x1=0;
+			y1=m*x1+b;
+			x2=canvas.width;
+			y2=m*x2+b;
+			ctx.beginPath();
+			ctx.strokeStyle="red";
+			ctx.moveTo(x1,y1);
+			ctx.lineTo(x2,y2);
+			ctx.stroke();
+		}
+
+		function lr(){
+			sum=0;
+			sum1=0;
+			for(i=0;i<Points.length;i++){
+				sum+=Points[i].x;
+				sum1+=Points[i].y;
+			}
+			xmean=sum/Points.length;
+			ymean=sum1/Points.length;
+			
+			num=0
+			den=0;
+			for(i=0;i<Points.length;i++){
+				num+=((Points[i].x-xmean)*(Points[i].y-ymean));
+				den+=(Points[i].x-xmean)*(Points[i].x-xmean);
+			}
+
+			m=num/den;
+			b=ymean-m*xmean;
+
+		}
+	</script>
+
+</body>
+</html>
