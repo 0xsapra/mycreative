@@ -82,6 +82,6 @@ for i in range(1,len(forecast)):
 res=forecast[-1]-Y_later[-1]
 idc="increase" if res>0 else "decrease"
 print "\npresent is ",forecast[-1] ," that is" ,res," "+idc+" in "+str(asked)+" hours\n"
-
+print "I am ",accuracy*100," % accurate at the moment"
 
 
