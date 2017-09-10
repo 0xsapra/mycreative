@@ -9,4 +9,5 @@ This Repo have some amazing Apps , some of them are
 8. scanners
 9. crawler
 10. messanger app 
+11. Chat Bot
 and MUCH MUCH more
