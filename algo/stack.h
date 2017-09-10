@@ -1,4 +1,4 @@
-#include<stdlib.h>
+#include <stdlib.h>
 
 // structure def
 struct node_head{
