@@ -32,9 +32,10 @@ to_find='C'
 
 try:
 	lookup=raw_input("Enter hours to lookup for default = 2 (Enter to proceed with next 2 hours)")
-	lookup=(lookup)
+	asked=(lookup)
 	if lookup=="":
-		lookup=0.002	
+		lookup=0.002
+		asked=2
 	else:
 		lookup=float(lookup)/len(df)
 
@@ -76,9 +77,11 @@ prev=forecast[0]
 prev_=Y_later[0]
 d1,d2=0,0
 for i in range(1,len(forecast)):
-	print forecast[i],"is forecast closed price  and found ",Y_later[i]," in next 2 hour"
+	print forecast[i],"is forecast closed price  and found ",Y_later[i]," in next "+str(asked)+" hour"
 
-print "\npresent is ",forecast[-1] ," that is" ,forecast[-1]-Y_later[-1]," inc/dec in 2 hours\n"
+res=forecast[-1]-Y_later[-1]
+idc="increase" if res>0 else "decrease"
+print "\npresent is ",forecast[-1] ," that is" ,res," "+idc+" in "+str(asked)+" hours\n"
 
 
 

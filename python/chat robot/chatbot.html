@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Chat-BOT</title>
+	<link rel="stylesheet" href="w3.css">
+	<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body class="w3-brown">
+	<div class="w3-card-4 main w3-center w3-light-grey">
+		<div class="w3-blue w3-center">
+			<h2 style="margin:0">CHAT BOT</h2>
+		</div>
+		<div class="chat">
+			
+		</div>
+		<div id="type" class="w3-row">
+				<form action="" style="height:100%" id="form1" autocomplete="off">
+
+					<input type="text" name="text"  placeholder="Enter your message..." class="w3-threequarter full" id="text" />
+					<input type="submit" name="button" class="w3-quarter w3-button w3-cyan">
+				</form>
+			</div>
+	</div>s
+
+	<script>
+	var field=document.getElementById('text');
+	document.getElementById('form1').addEventListener("submit",function(e){
+		e.preventDefault();
+		var x=document.createElement('div');
+		var xb=document.createElement('div');
+		xb.className+=" cht-content";
+		var y=document.createTextNode("You :"+field.value);
+		x.className="w3-orange user";
+		x.appendChild(y);
+		xb.appendChild(x);
+		document.getElementsByClassName("chat")[0].appendChild(xb);
+		var data=field.value;
+		var xhr=new XMLHttpRequest();
+		xhr.open("GET","http://localhost/python/pyth.php?data="+btoa(data),true);
+		xhr.send();
+		xhr.onload=function(){
+			var xb1=document.createElement('div');
+			xb1.className+=" cht-contentbot";
+			var x1=document.createElement('div');
+			var y1=document.createTextNode("BOT :"+xhr.responseText);
+			x1.className="w3-yellow user";
+			x1.appendChild(y1);
+			xb1.appendChild(x1);
+			document.getElementsByClassName("chat")[0].appendChild(xb1);
+		}
+		field.value="";
+	});
+	</script>
+</body>
+</html>
